@@ -25,7 +25,7 @@ const Home = () => {
   return (
     <div className="home container mx-auto py-10 2xl:py-20 grid grid-cols-3 gap-5 2xl:gap-10">
       <div className="left col-span-2">
-        <SectionTitle SectionTitle="All Projects" className="mb-10" />
+        <SectionTitle SectionTitle="All Projects" />
         <div className="project-wrapper flex gap-5 2xl:gap-10 flex-wrap">
           {projects &&
             projects.map((project) => (
