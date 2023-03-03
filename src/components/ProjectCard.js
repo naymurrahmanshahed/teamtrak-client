@@ -1,6 +1,6 @@
 import { currencyFormatter } from "../utils/currencyFormatter";
 import { useProjectsContext } from "../hooks/useProjectsContext";
-
+import moment from "moment";
 const ProjectCard = ({ project }) => {
   const { dispatch } = useProjectsContext();
   const handleDelete = async () => {
@@ -18,7 +18,7 @@ const ProjectCard = ({ project }) => {
   };
 
   return (
-    <div className="single-project bg-gray-800 p-5 rounded-xl shadow-xl border border-gray-700 flex flex-col gap-5 w-[25rem] xl:[30rem]">
+    <div className="single-project bg-gray-800 p-3 2xl:p-5 rounded-xl shadow-xl border border-gray-700 flex flex-col gap-5 w-[25rem] xl:[30rem]">
       <div className="top">
         <span className="text-teal-400">ID: {project._id}</span>
         <h3 className="text-3xl font-medium truncate">{project.title}</h3>
@@ -26,14 +26,14 @@ const ProjectCard = ({ project }) => {
           {project.tech}
         </span>
       </div>
-      <div className="mid text-gray-300 flex gap-10 ">
+      <div className="mid text-gray-300 flex gap-5 2xl:gap-10 ">
         <div className="left flex flex-col">
           <span>Budget: {currencyFormatter(project.budget)}</span>
           <span>
-            Added on: {new Date(project.createdAt).toLocaleDateString()}
+            Added on: {moment(project.createdAt).format("MMM DD hh:mm A")}
           </span>
           <span>
-            Last Updated: {new Date(project.updatedAt).toLocaleDateString()}
+            Last Updated: {moment(project.updatedAt).format("MMM DD hh:mm A")}
           </span>
         </div>
         <div className="right flex flex-col">

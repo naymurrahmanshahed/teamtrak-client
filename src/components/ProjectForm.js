@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SectionTitle from "./SectionTitle";
 import { useProjectsContext } from "../hooks/useProjectsContext";
+
 const ProjectForm = () => {
   const [title, setTitle] = useState("");
   const [tech, setTech] = useState("");
@@ -9,6 +10,8 @@ const ProjectForm = () => {
   const [manager, setManager] = useState("");
   const [dev, setDev] = useState("");
   const [error, setError] = useState(null);
+
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const { dispatch } = useProjectsContext();
   const handleForm = async (e) => {
@@ -30,6 +33,7 @@ const ProjectForm = () => {
     //!res.ok set error
     if (!res.ok) {
       setError(json.error);
+      setEmptyFields(json.emptyFields);
     }
 
     //res.ok reset
@@ -42,7 +46,7 @@ const ProjectForm = () => {
       setManager("");
       setDev("");
       setError(null);
-
+      setEmptyFields([]);
       dispatch({ type: "CREATE_PROJECT", payload: json });
     }
   };
@@ -63,11 +67,14 @@ const ProjectForm = () => {
         <input
           onChange={(e) => setTitle(e.target.value)}
           value={title}
-          className="bg-transparent border border-gray-500
+          className={`bg-transparent border 
           py-2 px-5
           outline-none
-          rounded-lg focus:border-teal-400 duration-300
-          "
+          rounded-lg focus:border-teal-400 duration-300 ${
+            emptyFields?.includes("title")
+              ? "border-rose-500"
+              : "border-gray-500"
+          }`}
           type="text"
           placeholder="e.g. e-commerce website"
           id="title"
@@ -84,11 +91,14 @@ const ProjectForm = () => {
         <input
           onChange={(e) => setTech(e.target.value)}
           value={tech}
-          className="bg-transparent border border-gray-500
+          className={`bg-transparent border 
           py-2 px-5
           outline-none
-          rounded-lg focus:border-teal-400 duration-300
-          "
+          rounded-lg focus:border-teal-400 duration-300 ${
+            emptyFields?.includes("tech")
+              ? "border-rose-500"
+              : "border-gray-500"
+          }`}
           type="text"
           placeholder="e.g. node.js react"
           id="technology"
@@ -105,11 +115,14 @@ const ProjectForm = () => {
         <input
           onChange={(e) => setBudget(e.target.value)}
           value={budget}
-          className="bg-transparent border border-gray-500
+          className={`bg-transparent border 
           py-2 px-5
           outline-none
-          rounded-lg focus:border-teal-400 duration-300
-          "
+          rounded-lg focus:border-teal-400 duration-300 ${
+            emptyFields?.includes("budget")
+              ? "border-rose-500"
+              : "border-gray-500"
+          }`}
           type="number"
           placeholder="e.g. 5 USD"
           id="budget"
@@ -126,11 +139,14 @@ const ProjectForm = () => {
         <input
           onChange={(e) => setDuration(e.target.value)}
           value={duration}
-          className="bg-transparent border border-gray-500
+          className={`bg-transparent border 
           py-2 px-5
           outline-none
-          rounded-lg focus:border-teal-400 duration-300
-          "
+          rounded-lg focus:border-teal-400 duration-300 ${
+            emptyFields?.includes("duration")
+              ? "border-rose-500"
+              : "border-gray-500"
+          }`}
           type="number"
           placeholder="e.g. 2 weeks"
           id="duration"
@@ -147,11 +163,14 @@ const ProjectForm = () => {
         <input
           onChange={(e) => setManager(e.target.value)}
           value={manager}
-          className="bg-transparent border border-gray-500
+          className={`bg-transparent border 
           py-2 px-5
           outline-none
-          rounded-lg focus:border-teal-400 duration-300
-          "
+          rounded-lg focus:border-teal-400 duration-300 ${
+            emptyFields?.includes("manager")
+              ? "border-rose-500"
+              : "border-gray-500"
+          }`}
           type="text"
           placeholder="e.g. ayesha"
           id="manager"
@@ -168,11 +187,12 @@ const ProjectForm = () => {
         <input
           onChange={(e) => setDev(e.target.value)}
           value={dev}
-          className="bg-transparent border border-gray-500
+          className={`bg-transparent border 
           py-2 px-5
           outline-none
-          rounded-lg focus:border-teal-400 duration-300
-          "
+          rounded-lg focus:border-teal-400 duration-300 ${
+            emptyFields?.includes("dev") ? "border-rose-500" : "border-gray-500"
+          }`}
           type="number"
           placeholder="e.g 5"
           id="dev"
