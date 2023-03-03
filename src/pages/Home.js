@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ProjectCard from "../components/ProjectCard";
 import SectionTitle from "../components/SectionTitle";
 
 const Home = () => {
@@ -35,7 +36,9 @@ const Home = () => {
         <SectionTitle SectionTitle="All Projects" className="mb-10" />
         <div className="project-wrapper flex gap-5 2xl:gap-10 flex-wrap">
           {projects &&
-            projects.map((project) => <p key={project._id}>{project.title}</p>)}
+            projects.map((project) => (
+              <ProjectCard project={project} key={project._id} />
+            ))}
         </div>
       </div>
       <div className="right col-span-1"></div>
