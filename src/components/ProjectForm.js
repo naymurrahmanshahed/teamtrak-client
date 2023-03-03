@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SectionTitle from "./SectionTitle";
-
+import { useProjectsContext } from "../hooks/useProjectsContext";
 const ProjectForm = () => {
   const [title, setTitle] = useState("");
   const [tech, setTech] = useState("");
@@ -10,6 +10,7 @@ const ProjectForm = () => {
   const [dev, setDev] = useState("");
   const [error, setError] = useState(null);
 
+  const { dispatch } = useProjectsContext();
   const handleForm = async (e) => {
     e.preventDefault();
     //data
@@ -42,7 +43,7 @@ const ProjectForm = () => {
       setDev("");
       setError(null);
 
-      console.log("new project added", json);
+      dispatch({ type: "CREATE_PROJECT", payload: json });
     }
   };
   return (
