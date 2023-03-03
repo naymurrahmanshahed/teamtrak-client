@@ -1,8 +1,55 @@
+import { useState } from "react";
 import SectionTitle from "./SectionTitle";
 
 const ProjectForm = () => {
+  const [title, setTitle] = useState("");
+  const [tech, setTech] = useState("");
+  const [budget, setBudget] = useState("");
+  const [duration, setDuration] = useState("");
+  const [manager, setManager] = useState("");
+  const [dev, setDev] = useState("");
+  const [error, setError] = useState(null);
+
+  const handleForm = async (e) => {
+    e.preventDefault();
+    //data
+    const projectObj = { title, tech, budget, duration, manager, dev };
+
+    //post req here
+    const res = await fetch("http://localhost:5000/api/projects", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(projectObj),
+    });
+
+    const json = await res.json();
+
+    //!res.ok set error
+    if (!res.ok) {
+      setError(json.error);
+    }
+
+    //res.ok reset
+
+    if (res.ok) {
+      setTitle("");
+      setTech("");
+      setBudget("");
+      setDuration("");
+      setManager("");
+      setDev("");
+      setError(null);
+
+      console.log("new project added", json);
+    }
+  };
   return (
-    <form className="project-form flex flex-col gap-3 2xl:gap-5">
+    <form
+      onSubmit={handleForm}
+      className="project-form flex flex-col gap-3 2xl:gap-5"
+    >
       <SectionTitle SectionTitle={"Add a New Project"} />
 
       <div className="form-control flex flex-col gap-2 ">
@@ -13,6 +60,8 @@ const ProjectForm = () => {
           Project title
         </label>
         <input
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
           className="bg-transparent border border-gray-500
           py-2 px-5
           outline-none
@@ -32,6 +81,8 @@ const ProjectForm = () => {
           Technologies
         </label>
         <input
+          onChange={(e) => setTech(e.target.value)}
+          value={tech}
           className="bg-transparent border border-gray-500
           py-2 px-5
           outline-none
@@ -51,6 +102,8 @@ const ProjectForm = () => {
           Budget (In USD)
         </label>
         <input
+          onChange={(e) => setBudget(e.target.value)}
+          value={budget}
           className="bg-transparent border border-gray-500
           py-2 px-5
           outline-none
@@ -70,6 +123,8 @@ const ProjectForm = () => {
           Duration (In weeks)
         </label>
         <input
+          onChange={(e) => setDuration(e.target.value)}
+          value={duration}
           className="bg-transparent border border-gray-500
           py-2 px-5
           outline-none
@@ -89,6 +144,8 @@ const ProjectForm = () => {
           Manager
         </label>
         <input
+          onChange={(e) => setManager(e.target.value)}
+          value={manager}
           className="bg-transparent border border-gray-500
           py-2 px-5
           outline-none
@@ -108,6 +165,8 @@ const ProjectForm = () => {
           Developers
         </label>
         <input
+          onChange={(e) => setDev(e.target.value)}
+          value={dev}
           className="bg-transparent border border-gray-500
           py-2 px-5
           outline-none
@@ -125,6 +184,7 @@ const ProjectForm = () => {
       >
         Add project
       </button>
+      {error && <p className="text-rose-500">*{error}</p>}
     </form>
   );
 };
