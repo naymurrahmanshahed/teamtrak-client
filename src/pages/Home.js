@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ProjectCard from "../components/ProjectCard";
+import ProjectForm from "../components/ProjectForm";
 import SectionTitle from "../components/SectionTitle";
 
 const Home = () => {
@@ -41,7 +42,7 @@ const Home = () => {
             ))}
         </div>
       </div>
-      <div className="right col-span-1"></div>
+      <ProjectForm />
     </div>
   );
 };
