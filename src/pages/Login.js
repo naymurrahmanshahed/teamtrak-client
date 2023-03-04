@@ -1,11 +1,16 @@
 import { useState } from "react";
 import SectionTitle from "../components/SectionTitle";
+import { useLogin } from "../hooks/useLogin";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleLogin = (e) => {
+  const { login, error, loading } = useLogin();
+  const handleLogin = async (e) => {
     e.preventDefault();
+
+    //user login
+
+    await login(email, password);
   };
 
   return (
@@ -50,11 +55,12 @@ const Login = () => {
         />
       </div>
       <button
-        type="submit"
+        disabled={loading}
         className="bg-teal-400 text-gray-900 py-3 rounded-xl hover:bg-teal-600 duration-300  "
       >
         Log In
       </button>
+      {error && <p className="text-rose-500">*{error}</p>}
     </form>
   );
 };

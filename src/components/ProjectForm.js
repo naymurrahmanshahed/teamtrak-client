@@ -22,7 +22,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
     // if there is no project then send post req
     if (!project) {
       //post req here
-      const res = await fetch("http://localhost:5000/api/projects", {
+      const res = await fetch("http://localhost:4000/api/projects", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -58,7 +58,7 @@ const ProjectForm = ({ project, setIsModalOpen, setIsOverlayOpen }) => {
     if (project) {
       //send patch req
       const res = await fetch(
-        `http://localhost:5000/api/projects/${project._id}`,
+        `http://localhost:4000/api/projects/${project._id}`,
         {
           method: "PATCH",
           headers: {

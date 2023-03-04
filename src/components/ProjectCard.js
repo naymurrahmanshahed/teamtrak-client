@@ -11,7 +11,7 @@ const ProjectCard = ({ project }) => {
   const { dispatch } = useProjectsContext();
   const handleDelete = async () => {
     const res = await fetch(
-      `http://localhost:5000/api/projects/${project._id}`,
+      `http://localhost:4000/api/projects/${project._id}`,
       {
         method: "DELETE",
       }

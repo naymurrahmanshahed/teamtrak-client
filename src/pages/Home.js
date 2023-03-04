@@ -8,7 +8,7 @@ const Home = () => {
   const { projects, dispatch } = useProjectsContext();
   useEffect(() => {
     const getAllProjects = async () => {
-      const res = await fetch("http://localhost:5000/api/projects");
+      const res = await fetch("http://localhost:4000/api/projects");
 
       if (!res.ok) {
         throw new Error("something went wrong");
