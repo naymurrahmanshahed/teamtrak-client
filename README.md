@@ -7,13 +7,13 @@ Managing projects and tasks can be overwhelming, especially when you are working
 
 ## Project Features
 
--Effortlessly manage projects: easily handle projects with ease and speed through the user-friendly interface.
+- Effortlessly manage projects: easily handle projects with ease and speed through the user-friendly interface.
 
--Robust security features: The app offers strong security with JWT authentication and frontend route protection, guaranteeing your data's safety and security.
+- Robust security features: The app offers strong security with JWT authentication and frontend route protection, guaranteeing your data's safety and security.
 
--User-specific project views: Users can view only the projects they've created, keeping project information confidential and secure.
+- User-specific project views: Users can view only the projects they've created, keeping project information confidential and secure.
 
--Intuitive and streamlined UI: The app's smooth and user-friendly interface simplifies project management.
+- Intuitive and streamlined UI: The app's smooth and user-friendly interface simplifies project management.
 
 ## Tools Used
 
@@ -28,11 +28,11 @@ Teamtrak is built using the MERN stack, featuring the following powerful tools:
 ## Installation
 
 1. Clone the client repository using the following command:
-`
-git clone https://github.com/shohan-pherones/teamtrak-client.git
 
+`git clone https://github.com/shohan-pherones/teamtrak-client.git
 `
 2. Clone the server repository using the following command:
+
 `git clone https://github.com/shohan-pherones/orbit-council-server.git
 `
 3.Install the required dependencies by running the following command in both the client and server directories:
@@ -40,10 +40,12 @@ git clone https://github.com/shohan-pherones/teamtrak-client.git
 `npm install
 `
 4. Create a `.env` file in the root directory of the server and add the following variables:
+
 `MONGO_URI=<your MongoDB connection string>
 SECRET=<a secret string for JWT authentication>
 `
 5.Create a `.env` file in the root directory of the client and add the following variable:
+
 `REACT_APP_BASE_URL=<your base URL, for example http://localhost:5000>
 `
 6.Start the backend server by running the following command in the server directory:
