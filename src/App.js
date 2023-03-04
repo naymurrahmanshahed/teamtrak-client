@@ -8,7 +8,7 @@ import { useAuthContext } from "./hooks/useAuthContext";
 function App() {
   const { user } = useAuthContext();
   return (
-    <div className="App  bg-gray-900  text-gray-100">
+    <div className="App  bg-gray-900  text-gray-100 px-5">
       <div className="min-h-screen">
         <Navbar />
         <Routes>
