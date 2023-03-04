@@ -12,11 +12,14 @@ const Home = () => {
 
   useEffect(() => {
     const getAllProjects = async () => {
-      const res = await fetch("http://localhost:4000/api/projects", {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
+      const res = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/api/projects`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
 
       if (!res.ok) {
         throw new Error("something went wrong");
