@@ -1,6 +1,7 @@
 # TeamTrak
 
 TeamTrak is a project management app that allows teams to efficiently track and manage their projects. It is built using React, Context API, Express, MongoDB, Tailwind CSS, JSON Web Token.
+
 ## Project Description
 
 Managing projects and tasks can be overwhelming, especially when you are working with a team. TeamTrak simplifies the process of tracking and managing projects by providing an intuitive interface that allows teams to easily assign tasks, track progress, and communicate with each other.
@@ -29,17 +30,15 @@ Teamtrak is built using the MERN stack, featuring the following powerful tools:
 
 1. Clone the client repository using the following command:
 
-`git clone https://github.com/shohan-pherones/teamtrak-client.git
-`
-2. Clone the server repository using the following command:
+`git clone https://github.com/naymurrahmanshahed/teamtrak-client.git
+` 2. Clone the server repository using the following command:
 
-`git clone https://github.com/shohan-pherones/orbit-council-server.git
+`git clone https://github.com/naymurrahmanshahed/teamtrak-server.git
 `
 3.Install the required dependencies by running the following command in both the client and server directories:
 
 `npm install
-`
-4. Create a `.env` file in the root directory of the server and add the following variables:
+` 4. Create a `.env` file in the root directory of the server and add the following variables:
 
 `MONGO_URI=<your MongoDB connection string>
 SECRET=<a secret string for JWT authentication>
