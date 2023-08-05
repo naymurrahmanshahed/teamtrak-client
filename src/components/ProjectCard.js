@@ -17,7 +17,7 @@ const ProjectCard = ({ project }) => {
       return;
     }
     const res = await fetch(
-      `http://localhost:4000/api/projects/${project._id}`,
+      `${process.env.REACT_APP_BASE_URL}/api/projects/${project._id}`,
       {
         method: "DELETE",
         headers: {
